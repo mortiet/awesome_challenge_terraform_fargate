@@ -6,7 +6,8 @@ The goal of this project is to auto provision an infrastructure consisting of a 
 ### Challenges faced:
 - To keep the containers light and easily debuggable I have used the alpine/socat container and the first challenge was to figure out how to create a client/server application with socat.
 - Private VPC + ECS didn't work and Docker Image Pull failed on the tasks initially so I had to create a separate public subnet on the VPC and attach a NAT gateway to resolve this issue while keeping the private services secure.
-
+- In order to avoid load-balancers (Challenge criteria). I investigated different ways to automate service discovery. I initially started by integrating the tasks with AWS App-Mesh which looked like Istio but due to some issue my service containers failed to load while Envoy sidecar was added to them. It took a lot of my time to debug the issue and due to the time limitation I decided not to continue with App Mesh.
+- To have a properly working solution I decided to use Service Discovery. It is less flexible than the service mesh method but has less overhead on the instances.
 
 How to run:
 
@@ -21,7 +22,12 @@ initiallize terraform:
 ```shell
 terraform init
 ```
+Check the plan
+```shell
+terraform plan
+```
 
+Apply the plan
 ```shell
 terraform apply
 ```
