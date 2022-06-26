@@ -1,0 +1,11 @@
+name                         = "awesomechallenge"
+environment                  = "temp"
+AWS_REGION                   = "us-east-1"
+cidr                         = "10.1.2.0/24"
+private_subnet               = "10.1.2.0/25"
+public_subnet                = "10.1.2.128/25"
+availability_zone            = "us-east-1a"
+server_container_port        = 5555
+server_container_image       = "alpine/socat"
+client_container_image       = "alpine/socat"
+server_container_environment = [{ "name" : "SRVPORT", "value" : "5555" }]
