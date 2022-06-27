@@ -9,3 +9,4 @@ server_container_port        = 5555
 server_container_image       = "alpine/socat"
 client_container_image       = "alpine/socat"
 server_container_environment = [{ "name" : "SRVPORT", "value" : "5555" }]
+client_container_environment = [{ "name" : "SRVPORT", "value" : "5555" },{ "name" : "SRVIP", "value" : "server.awp.local" }]

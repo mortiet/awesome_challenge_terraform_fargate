@@ -235,13 +235,10 @@ resource "aws_ecs_task_definition" "client" {
             /bin/sh -c 'while true; do if [ "x$(timeout 2 socat TCP:$SRVIP:$SRVPORT - &>/dev/null; echo $?)" == "x0" ]; then echo $(date +"[%D %H:%M:%S]") Successful TCP connetion to $SRVIP:$SRVPORT; else echo $(date +"[%D %H:%M:%S]") Failed TCP connetion to $SRVIP:$SRVPORT; fi; sleep 1; done';
             EOT
         ]
-        cpu               = 256
-        memoryReservation = 512
+        cpu               = 200
+        memoryReservation = 400
         essential         = true
-        environment = [
-          { "name" : "SRVPORT", "value" : "5555" },
-          { "name" : "SRVIP", "value" : "server.awp.local" }
-        ]
+        environment = var.client_container_environment
         portMappings = [
           {
             protocol      = "tcp"

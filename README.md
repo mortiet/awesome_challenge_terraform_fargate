@@ -14,31 +14,41 @@ The goal of this project is to auto provision an infrastructure consisting of a 
 - In order to avoid load-balancers (Challenge criteria). I investigated different ways to automate service discovery. I initially started by integrating the tasks with AWS App-Mesh which looked like Istio but due to some issue my service containers failed to load while Envoy sidecar was added to them. It took a lot of my time to debug the issue and due to the time limitation I decided not to continue with App Mesh.
 - To have a properly working solution I decided to use Service Discovery. It is less flexible than the service mesh method but has less overhead on the instances.
 
-# How to run:
+### How to run:
 
-## On linux:
-
-- load your aws keys:
+- Modify `terraform.tfvars` based on your target deployment environment requirements.
+- Load your aws keys:
   
   ```shell
+  # On Linux:
   export AWS_ACCESS_KEY_ID=""
   export AWS_SECRET_ACCESS_KEY=""
   ```
+  
+  Other authentication methods are also available please refer to https://registry.terraform.io/providers/hashicorp/aws/latest/docs
 
-initiallize terraform:
+- initiallize terraform:
+  
+  ```shell
+  terraform init
+  ```
 
-```shell
-terraform init
-```
+- Check the plan
+  
+  ```shell
+  terraform plan
+  ```
 
-Check the plan
+- Apply the plan
+  
+  ```shell
+  terraform apply
+  ```
 
-```shell
-terraform plan
-```
+### How to test:
 
-Apply the plan
+This terraform plan creates cloudwatch logs for the tasks. After 2-3 minutes you should see the logs showing up on the client mentioning that it has been successfully able to connect to the server.
 
-```shell
-terraform apply
-```
+![](assets/2022-06-27-01-16-18-image.png)
+
+The client uses private hosted domains defined in service discovery to find the server and connect to it.
