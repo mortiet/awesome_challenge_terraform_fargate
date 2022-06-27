@@ -48,6 +48,11 @@ variable "server_container_environment" {
   type        = list(any)
 }
 
+variable "client_container_environment" {
+  description = "client task environment variables"
+  type        = list(any)
+}
+
 variable "AWS_REGION" {
   type = string
 }
