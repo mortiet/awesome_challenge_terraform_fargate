@@ -43,16 +43,6 @@ variable "client_container_image" {
   type        = string
 }
 
-variable "server_container_environment" {
-  description = "server task environment variables"
-  type        = list(any)
-}
-
-variable "client_container_environment" {
-  description = "client task environment variables"
-  type        = list(any)
-}
-
 variable "AWS_REGION" {
   type = string
 }
