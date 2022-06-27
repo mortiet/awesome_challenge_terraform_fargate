@@ -17,6 +17,7 @@ The goal of this project is to auto provision an infrastructure consisting of a 
 ### How to run:
 
 - Modify `terraform.tfvars` based on your target deployment environment requirements.
+
 - Load your aws keys:
   
   ```shell
@@ -52,3 +53,11 @@ This terraform plan creates cloudwatch logs for the tasks. After 2-3 minutes you
 ![](assets/2022-06-27-01-16-18-image.png)
 
 The client uses private hosted domains defined in service discovery to find the server and connect to it.
+
+On the server side you should see the traces of requests comming from the  client:
+
+![](X:\workspace\devops\challenge\awesome_challenge_terraform_fargate\assets\2022-06-27-01-33-10-image.png)
+
+In case the client fails to reach the server. It would show the failure message:
+
+![](X:\workspace\devops\challenge\awesome_challenge_terraform_fargate\assets\2022-06-27-01-44-38-image.png)
