@@ -56,8 +56,8 @@ The client uses private hosted domains defined in service discovery to find the 
 
 On the server side you should see the traces of requests comming from the  client:
 
-![](X:\workspace\devops\challenge\awesome_challenge_terraform_fargate\assets\2022-06-27-01-33-10-image.png)
+![](assets/2022-06-27-01-33-10-image.png)
 
 In case the client fails to reach the server. It would show the failure message:
 
-![](X:\workspace\devops\challenge\awesome_challenge_terraform_fargate\assets\2022-06-27-01-44-38-image.png)
+![](assets/2022-06-27-01-44-38-image.png)
